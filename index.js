@@ -13,19 +13,19 @@ async function startWebcam() {
             video: {
                 facingMode: 'user',
                 //frameRate: { ideal: Number(document.getElementById('frameRate').value) },
-                focusMode: document.getElementById('focusMode').value,
-                focusDistance: Number(document.getElementById('focusDistance').value),
+                //focusMode: document.getElementById('focusMode').value,
+                //focusDistance: Number(document.getElementById('focusDistance').value),
                 advanced: [
                     //  { iso: Number(document.getElementById('isoValue').value) },
                     //   { exposureMode: 'manual' },
                     //     { exposureTime: Number(document.getElementById('exposureTime').value) },
-                //    { focusMode: document.getElementById('focusMode').value },
-                  //  { focusDistance: Number(document.getElementById('focusDistance').value) }
+                    { focusMode: document.getElementById('focusMode').value },
+                    { focusDistance: Number(document.getElementById('focusDistance').value) }
                 ]
             }
         };
-        if(!stream){
-          stream = await navigator.mediaDevices.getUserMedia(constraints);
+        if(!stream) {
+            stream = await navigator.mediaDevices.getUserMedia(constraints);
         }
 
 
@@ -36,7 +36,7 @@ async function startWebcam() {
             const possibleConstraints = stream.getVideoTracks()[0].getCapabilities();
             Object.keys(constraints.video).forEach(key => {
                 if(!possibleConstraints[key]){
-                    // delete constraints.video[key];
+                    delete constraints.video[key];
                 }
             });
                 stream.getVideoTracks()[0].applyConstraints(constraints.video).then(x=>{
