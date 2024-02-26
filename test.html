@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,8 +30,13 @@
     <br>
     <label for="exposureTime">Exposure Time (ms):</label>
     <input type="number" id="exposureTime" value="500" min="1" max="10000">
+    <br>
+    <label for="colorTemperature">Color Temperature:</label>
+    <input type="number" id="colorTemperature" value="5000" min="2000" max="10000">
 
-    <pre id="capabilities"></pre>
+    <br>
+    <label for="zoom">Zoom:</label>
+    <input type="number" id="zoom" value="1" min="1" max="8">
 </div>
 
 <script>
@@ -52,12 +57,15 @@
                     advanced: [
                         { iso: Number(document.getElementById('isoValue').value) },
                         { exposureMode: 'manual' },
-                        { exposureTime: Number(document.getElementById('exposureTime').value) }
+                        { exposureTime: Number(document.getElementById('exposureTime').value) },
+                        { colorTemperature: Number(document.getElementById('colorTemperature').value) },
+                        { zoom: Number(document.getElementById('zoom').value) }
                     ]
                 }
             };
             stream = await navigator.mediaDevices.getUserMedia(constraints);
-            document.getElementById("capabilities").innerText = JSON.stringify(stream.getVideoTracks()[0].getCapabilities(), undefined, 2);
+            document.body.insertAdjacentHTML( "beforeend",`<pre>${JSON.stringify(stream.getVideoTracks()[0].getCapabilities(), undefined, 2)}</pre>`)
+
             const videoElement = document.getElementById('video-element');
             videoElement.srcObject = stream;
         } catch (error) {
@@ -77,8 +85,19 @@
         startWebcam();
     });
 
+    document.getElementById('zoom').addEventListener('change', function() {
+        stopWebcam();
+        startWebcam();
+    });
+
     // Update exposure time when input changes
     document.getElementById('exposureTime').addEventListener('change', function() {
+        stopWebcam();
+        startWebcam();
+    });
+
+    // Update color temperature when input changes
+    document.getElementById('colorTemperature').addEventListener('change', function() {
         stopWebcam();
         startWebcam();
     });
@@ -98,3 +117,8 @@
 </script>
 </body>
 </html>
+
+
+ <!--
+  document.body.insertAdjacentHTML( "beforeend",`<pre>${JSON.stringify(stream.getVideoTracks()[0].getCapabilities(), undefined, 2)}</pre>`)
+ -->
