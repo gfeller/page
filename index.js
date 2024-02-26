@@ -36,7 +36,7 @@ async function startWebcam() {
             const possibleConstraints = stream.getVideoTracks()[0].getCapabilities();
             Object.keys(constraints.video).forEach(key => {
                 if(!possibleConstraints[key]){
-                    delete constraints.video[key];
+                   // delete constraints.video[key];
                 }
             });
                 stream.getVideoTracks()[0].applyConstraints(constraints.video).then(x=>{
@@ -44,7 +44,7 @@ async function startWebcam() {
                     const streamConstreants = JSON.stringify(stream.getVideoTracks()[0].getConstraints());
                     const capabilities = JSON.stringify(stream.getVideoTracks()[0].getCapabilities(), undefined, 2);
                     document.getElementById("data").innerText = `Settings: ${settings}
-Constraincts: ${constraints}
+Constraincts: ${ JSON.stringify(constraints, undefined, 2)}
 StreamConstraints: ${streamConstreants}
 Capabilities : ${capabilities}
 `;
