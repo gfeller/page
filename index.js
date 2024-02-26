@@ -23,7 +23,7 @@ async function startWebcam() {
                 ]
             }
         };
-        if(stream){
+        if(!stream){
           stream = await navigator.mediaDevices.getUserMedia(constraints);
         }
 
