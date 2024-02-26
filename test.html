@@ -44,6 +44,7 @@
 
 <script>
     let stream;
+    let dummy = {};
 
     // Function to handle errors
     function handleError(error) {
@@ -53,16 +54,16 @@
     // Function to start the webcam
     async function startWebcam() {
         try {
-            const constraints = {
+            let constraints = {
                 video: {
                     facingMode: 'user',
-                    frameRate: { ideal: Number(document.getElementById('frameRate').value) },
-                    iso: 50
+                    //frameRate: { ideal: Number(document.getElementById('frameRate').value) },
                 }
             };
             stream = await navigator.mediaDevices.getUserMedia(constraints);
 
 
+            constraints = {...constraints, ...dummy}
 
             setTimeout(() => {
 
@@ -76,6 +77,7 @@ Capabilities : ${capabilities}
 `;
                     }).catch(error => {
                         document.getElementById("data").innerText = error;
+                        debugger;
                     })
 
                 }
