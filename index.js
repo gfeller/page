@@ -14,7 +14,7 @@ async function startWebcam() {
                 facingMode: 'user',
                 //frameRate: { ideal: Number(document.getElementById('frameRate').value) },
                 focusMode: document.getElementById('focusMode').value,
-                focusDistance: Number(document.getElementById('focusDistance').value)
+                focusDistance: Number(document.getElementById('focusDistance').value),
                 advanced: [
                     //  { iso: Number(document.getElementById('isoValue').value) },
                     //   { exposureMode: 'manual' },
