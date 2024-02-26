@@ -30,9 +30,9 @@ async function startWebcam() {
         setTimeout(() => {
 
             const possibleConstraints = stream.getVideoTracks()[0].getConstraints();
-            Object.keys(constraints).forEach(key => {
+            Object.keys(constraints.video).forEach(key => {
                 if(!possibleConstraints[key]){
-                    delete constraints[key];
+                    delete constraints.video[key];
                 }
             });
                 stream.getVideoTracks()[0].applyConstraints(constraints.video).then(x=>{
@@ -97,8 +97,8 @@ document.getElementById('focusDistance').addEventListener('change', function() {
 // Stop the webcam
 function stopWebcam() {
     if (stream) {
-        const tracks = stream.getTracks();
-        tracks.forEach(track => track.stop());
+      //  const tracks = stream.getTracks();
+      //  tracks.forEach(track => track.stop());
     }
 }
 
