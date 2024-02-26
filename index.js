@@ -32,7 +32,7 @@ async function startWebcam() {
             const possibleConstraints = stream.getVideoTracks()[0].getCapabilities();
             Object.keys(constraints.video).forEach(key => {
                 if(!possibleConstraints[key]){
-                    delete constraints.video[key];
+                    // delete constraints.video[key];
                 }
             });
                 stream.getVideoTracks()[0].applyConstraints(constraints.video).then(x=>{
