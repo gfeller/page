@@ -85,7 +85,7 @@ document.getElementById('exposureTime').addEventListener('change', function() {
 document.getElementById('colorTemperature').addEventListener('change', function() {
     stopWebcam();
     startWebcam();
-});
+});*/
 
 // Update focus mode when input changes
 document.getElementById('focusMode').addEventListener('change', function() {
