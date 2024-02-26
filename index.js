@@ -41,10 +41,11 @@ async function startWebcam() {
             });
                 stream.getVideoTracks()[0].applyConstraints(constraints.video).then(x=>{
                     const settings = JSON.stringify( stream.getVideoTracks()[0].getSettings());
-                    const constraints = JSON.stringify(stream.getVideoTracks()[0].getConstraints());
+                    const streamConstreants = JSON.stringify(stream.getVideoTracks()[0].getConstraints());
                     const capabilities = JSON.stringify(stream.getVideoTracks()[0].getCapabilities(), undefined, 2);
                     document.getElementById("data").innerText = `Settings: ${settings}
 Constraincts: ${constraints}
+StreamConstraints: ${streamConstreants}
 Capabilities : ${capabilities}
 `;
                 }).catch(error => {
