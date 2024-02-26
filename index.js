@@ -11,7 +11,7 @@ async function startWebcam() {
 
         const constraints = {
             video: {
-                facingMode: 'user',
+                facingMode: "environment",
                 //frameRate: { ideal: Number(document.getElementById('frameRate').value) },
                 //focusMode: document.getElementById('focusMode').value,
                 //focusDistance: Number(document.getElementById('focusDistance').value),
