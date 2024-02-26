@@ -12,20 +12,24 @@ async function startWebcam() {
         const constraints = {
             video: {
                 facingMode: 'user',
-                frameRate: { ideal: Number(document.getElementById('frameRate').value) },
+                //frameRate: { ideal: Number(document.getElementById('frameRate').value) },
+                focusMode: document.getElementById('focusMode').value,
+                focusDistance: Number(document.getElementById('focusDistance').value)
                 advanced: [
                     //  { iso: Number(document.getElementById('isoValue').value) },
                     //   { exposureMode: 'manual' },
                     //     { exposureTime: Number(document.getElementById('exposureTime').value) },
-                    //    { colorTemperature: Number(document.getElementById('colorTemperature').value) },
-                    { focusMode: document.getElementById('focusMode').value },
-                    { focusDistance: Number(document.getElementById('focusDistance').value) }
+                //    { focusMode: document.getElementById('focusMode').value },
+                  //  { focusDistance: Number(document.getElementById('focusDistance').value) }
                 ]
             }
         };
         if(!stream){
           stream = await navigator.mediaDevices.getUserMedia(constraints);
         }
+
+
+
 
         setTimeout(() => {
 
