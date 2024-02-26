@@ -62,7 +62,7 @@ Capabilities : ${capabilities}
         handleError(error);
     }
 }
-
+/*
 // Update frame rate when input changes
 document.getElementById('frameRate').addEventListener('change', function() {
     stopWebcam();
