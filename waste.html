@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waste Detection on the browser using TF Lite</title>
+    
+
+    <style>
+        .img-container {
+  position: relative;
+  max-width: 100%;
+}
+
+img {
+  width: 100%; /* Ensure the image fills its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.boxes-container {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.box-container {
+  position: absolute;
+}
+
+.box {
+  border: 2vw solid; /* Use viewport width for border thickness */
+}
+
+.video {
+  width: 100%;
+  height: auto;
+}
+
+.label {
+  background-color: red;
+  color: white;
+  height: 12px; /* Use viewport width for height */
+  line-height: 12px; /* Use viewport width for line-height */
+  position: absolute;
+  top: -4vw; /* Use viewport width for top offset */
+  white-space: nowrap;
+  padding: 0 2vw; /* Use viewport width for padding */
+  font-size: 8px; /* Use viewport width for font-size */
+  pointer-events: none;
+  display: block;
+}
+
+.msg {
+  visibility: hidden;
+  font-size: 3vw; /* Use viewport width for font-size */
+}
+
+.msg.show {
+  visibility: visible;
+}
+
+/* Media Query for Smaller Screens (example breakpoint: 768px) */
+@media (max-width: 768px) {
+  .box {
+    border: 1vw solid; /* Adjust border thickness for smaller screens */
+  }
+
+  .label {
+    height: 8vw;
+    line-height: 8vw;
+    top: -6vw;
+    font-size: 6vw;
+    padding: 0 4vw;
+  }
+
+  .msg {
+    font-size: 5vw;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <h3>Waste Detection on the browser using TF Lite</h3>
+    <div class="video-container">
+      <video class="video" autoplay></video>
+      <div class="boxes-container"></div>
+    </div>
+    <div class="text"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-cpu"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-tflite@0.0.1-alpha.8/dist/tf-tflite.min.js"></script>
+    <script src="waste.js"></script>
+  </body>
+</html>
