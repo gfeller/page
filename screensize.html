@@ -24,13 +24,13 @@
         for (;0>=f(b);b<<=1);return d(b>>>1,b)|0
         }
 
-        var dppx = findFirstPositive(x => matchMedia(`(max-resolution: ${x}dppx)`).matches)
+ 
         var dpi = findFirstPositive(x => matchMedia(`(max-resolution: ${x}dpi)`).matches)
 
         
         document.querySelector("#container").innerText = `DPI: ${dpi}
-DPPX: ${dppx}
-width: ${window.screen.availWidth * window.devicePixelRatio / dpi * 2.54}        
+devicePixelRatio: ${window.devicePixelRatio}
+width: ${window.screen.availWidth * window.devicePixelRatio / dpi * 2.54}cm       
 `
         console.log("container")
     </script>
