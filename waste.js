@@ -165,4 +165,3 @@ const classLabels = {
   }
   
   startCamera();
-  

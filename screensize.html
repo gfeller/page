@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   
+</head>
+<body>
+    
+    <div id="container"></div>
+
+    <script defer>
+
+        
+        function findFirstPositive (f,b=1,d=(e,g,c)=>g<e?-1:0<f(c=e+g>>>1)?c==e||0>=f(c-1)?c:d(e,c-1):d(c+1,g)) {
+        for (;0>=f(b);b<<=1);return d(b>>>1,b)|0
+        }
+
+        var dppx = findFirstPositive(x => matchMedia(`(max-resolution: ${x}dppx)`).matches)
+        var dpi = findFirstPositive(x => matchMedia(`(max-resolution: ${x}dpi)`).matches)
+
+        
+        document.querySelector("#container").innerText = `DPI: ${dpi}
+DPPX: ${dppx}
+width: ${window.screen.availWidth * window.devicePixelRatio / dpi * 2.54}        
+`
+        console.log("container")
+    </script>
+</body>
+</html>
