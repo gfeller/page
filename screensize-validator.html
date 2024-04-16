@@ -20,6 +20,11 @@
     <div id="container" style="position: absolute; bottom: 10px; right: 20px; z-index: 100; color: red;" ></div>
 
 
+    <div style="position: absolute; top: 10px; right: 20px; z-index: 100">
+        <div id="in" style="width: 1in; background: green; transform-origin: top right;">1in</div>
+        <div id="cm" style="width: 1cm; background: RED; transform-origin: top right;">1cm</div>
+    </div>
+
     <div>
         <div style="width: 8.56cm; height: 5.398cm;; background: black; position: absolute; top: 5px; left: 5px; transform-origin: top left;" id="card">POST CARD</div>
 
@@ -38,8 +43,12 @@
 
         const range = document.querySelector("#range");
         const card = document.querySelector("#card");
+        const inEl = document.querySelector("#in");
+        const cmEl = document.querySelector("#cm");
         range.addEventListener("input", (event) => {
             card.style.transform = `scale(${range.value})`
+            inEl.style.transform = `scaleX(${range.value})`
+            cmEl.style.transform = `scaleX(${range.value})`
 
             console.log(card.clientWidth* range.value)
             const pxNormal = 8.56 / card.clientWidth;
