@@ -19,7 +19,7 @@
 
 
     <div>
-        <div style="width: 8.56cm; height: 5.398cm;; background: black; position: absolute; top: 10px; left: 10px; transform-origin: top left;" id="card">POST CARD</div>
+        <div style="width: 8.56cm; height: 5.398cm;; background: black; position: absolute; top: 0px; left: 0px; transform-origin: top left;" id="card">POST CARD</div>
 
 
         <input type="range" style="width: 100%; background: black; position: absolute; bottom: 0px; left: 0px;" id="range" value="1" min="0.5" max="1.5" step="0.01" onchange="">
@@ -42,6 +42,7 @@
             document.querySelector("#container").innerText = `DPI: ${dpi * range.value}
 devicePixelRatio: ${window.devicePixelRatio}
 width: ${window.screen.availWidth * window.devicePixelRatio / (dpi * range.value) * 2.54}cm       
+`
 
         } )
         
