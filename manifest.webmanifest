@@ -1,12 +1,12 @@
 {
   "name": "TEST",
-  "short_name": "brainTimeCH",
+  "short_name": "TEST",
   "theme_color": "#fff",
   "background_color": "#fff",
   "display": "fullScreen",
   "orientation": "landscape",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/screensize-validator.html",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
