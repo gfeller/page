@@ -39,7 +39,7 @@
         }
 
         .main-content{
-            height: 100%;
+            height: calc( 100dvh - var(--safe-area-inset-top) -  var(--safe-area-inset-bottom));
             width: calc( 100dvw - var(--safe-area-inset-right) -  var(--safe-area-inset-left));
             background: gray;
             border: 1px yellow solid;
@@ -66,8 +66,9 @@
 </head>
 <body class="main">
     <div class="fixed-header">HEADER</div>
-    <div class="main-content">
+    <div id="main-content" class="main-content">
         <button onclick="document.querySelector('body').classList.toggle('fullscreen')">Toggle Fullscreen</button>
+        <button onclick="document.querySelector('#main-content').classList.toggle('main-content')">Toggle Main Content</button>
         <button onclick="location.reload();">Reload Page</button>
     </div>    
 </body>
