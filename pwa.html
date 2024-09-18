@@ -15,7 +15,6 @@
 
         :root {
             --safe-area-inset-top: env(safe-area-inset-top);
-            --safe-area-inset-top: 30px;
             --safe-area-inset-right: env(safe-area-inset-right);
             --safe-area-inset-bottom: env(safe-area-inset-bottom);
             --safe-area-inset-left: env(safe-area-inset-left);
@@ -33,6 +32,10 @@
             height: calc( 100dvh - var(--safe-area-inset-top) -  var(--safe-area-inset-bottom));
             width: calc( 100dvw - var(--safe-area-inset-right) -  var(--safe-area-inset-left));
             border: 1px black solid;
+            display: flex;
+            background: purple; 
+            align-items: center; 
+            justify-content: center
         }
 
         .main-content{
@@ -61,7 +64,7 @@
         }        
     </style>   
 </head>
-<body style="display: flex; background: purple; align-items: center; justify-content: center" class="main">
+<body class="main">
     <div class="fixed-header">HEADER</div>
     <div class="main-content">
         <button onclick="document.querySelector('body').classList.toggle('fullscreen')">Toggle Fullscreen</button>
