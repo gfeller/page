@@ -12,9 +12,8 @@
     <title>Document</title>
 
     <style>
-
         :root {
-            --safe-area-inset-top: env(safe-area-inset-top);
+            --safe-area-inset-top: env(safe-area-inset-top);            
             --safe-area-inset-right: env(safe-area-inset-right);
             --safe-area-inset-bottom: env(safe-area-inset-bottom);
             --safe-area-inset-left: env(safe-area-inset-left);
@@ -28,9 +27,9 @@
         }
 
         .main{
-            padding: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom) var(--safe-area-inset-left);
-            height: 100dvh;
-            width: 100dvw;            
+            margin: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom) var(--safe-area-inset-left);
+            height: calc( 100dvh - var(--safe-area-inset-top) -  var(--safe-area-inset-bottom));
+            width: calc( 100dvw - var(--safe-area-inset-right) -  var(--safe-area-inset-left));
             display: flex;
             border: 1px black solid;
             background: purple; 
@@ -61,14 +60,22 @@
             margin: 0;
             box-sizing: border-box;
             overscroll-behavior: none !important;
-        }        
+        }   
+        
+        
+        
     </style>   
+    <script>
+        function setMainScreenSize(){
+            document.querySelector("#main-content").style.height = document.querySelector(".main").getBoundingClientRect().height + "px";
+        }
+    </script>
 </head>
 <body class="main">
     <div class="fixed-header">HEADER</div>
     <div id="main-content" class="main-content">
         <button onclick="document.querySelector('body').classList.toggle('fullscreen')">Toggle Fullscreen</button>
-        <button onclick="document.querySelector('#main-content').classList.toggle('main-content')">Toggle Main Content</button>
+        <button onclick="setMainScreenSize()">Set Content</button>
         <button onclick="location.reload();">Reload Page</button>
     </div>    
 </body>
