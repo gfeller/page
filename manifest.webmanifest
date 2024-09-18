@@ -6,7 +6,7 @@
   "display": "fullScreen",
   "orientation": "landscape",
   "scope": "/",
-  "start_url": "https://gfeller.github.io/page/screensize-validator.html",
+  "start_url": "https://gfeller.github.io/page/pwa.html",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
