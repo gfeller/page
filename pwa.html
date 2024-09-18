@@ -27,9 +27,9 @@
         }
 
         .main{
-            margin: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom) var(--safe-area-inset-left);
-            height: calc( 100dvh - var(--safe-area-inset-top) -  var(--safe-area-inset-bottom));
-            width: calc( 100dvw - var(--safe-area-inset-right) -  var(--safe-area-inset-left));
+            padding: var(--safe-area-inset-top) var(--safe-area-inset-right) var(--safe-area-inset-bottom) var(--safe-area-inset-left);
+            height: 100dvh;
+            width: 100dvw;
             display: flex;
             border: 1px black solid;
             background: purple; 
@@ -67,7 +67,9 @@
     </style>   
     <script>
         function setMainScreenSize(){
-            document.querySelector("#main-content").style.height = document.querySelector(".main").getBoundingClientRect().height + "px";
+            // document.querySelector("#main-content").style.height = document.querySelector(".main").getBoundingClientRect().height + "px";
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
         }
     </script>
 </head>
