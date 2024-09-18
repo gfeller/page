@@ -47,6 +47,16 @@
             justify-content: center
         }
 
+        .fullscreen .main{            
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .fullscreen .main-content{
+            height: calc( 100vh - var(--safe-area-inset-top) -  var(--safe-area-inset-bottom));
+            width: calc( 100vw - var(--safe-area-inset-right) -  var(--safe-area-inset-left));         
+        }
+
         .fixed-header{
             position: fixed;
             top: var(--safe-area-inset-top);
@@ -60,23 +70,23 @@
             margin: 0;
             box-sizing: border-box;
             overscroll-behavior: none !important;
-        }   
+        } 
         
         
         
     </style>   
     <script>
         function setMainScreenSize(){
-            // document.querySelector("#main-content").style.height = document.querySelector(".main").getBoundingClientRect().height + "px";
-            document.querySelector('body').style.display = 'none';
-            document.querySelector('body').style.display = 'block';
+            document.querySelector("#main-content").style.height = document.querySelector(".main").getBoundingClientRect().height + "px";
+            //document.querySelector('body').style.display = 'none';
+            //document.querySelector('body').style.display = 'block';
         }
     </script>
 </head>
 <body class="main">
     <div class="fixed-header">HEADER</div>
     <div id="main-content" class="main-content">
-        <button onclick="document.querySelector('body').classList.toggle('fullscreen')">Toggle Fullscreen</button>
+        <button onclick="document.querySelector('html').classList.toggle('fullscreen')">Toggle Fullscreen</button>
         <button onclick="setMainScreenSize()">Set Content</button>
         <button onclick="location.reload();">Reload Page</button>
     </div>    
