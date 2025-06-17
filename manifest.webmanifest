@@ -3,10 +3,10 @@
   "short_name": "TEST",
   "theme_color": "#fff",
   "background_color": "#fff",
-  "display": "fullScreen",
-  "orientation": "landscape",
+  "display": "fullscreen",
+  "orientation": "any",
   "scope": "/",
-  "start_url": "https://gfeller.github.io/page/screensize-validator.html",
+  "start_url": "https://gfeller.github.io/page/pwa.html",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
