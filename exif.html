@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EXIF Date from Webcam Photo</title>
+  <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    video, img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Capture Photo from Webcam and Extract EXIF Date</h2>
+  <video id="video" autoplay muted playsinline></video>
+  <br>
+  <button id="captureBtn">Take Photo</button>
+  <br>
+  <img id="photo" alt="Captured photo will appear here">
+  <div id="output"></div>
+
+  <script>
+    const video = document.getElementById('video');
+    const captureBtn = document.getElementById('captureBtn');
+    const photo = document.getElementById('photo');
+    const output = document.getElementById('output');
+
+    let imageCapture;
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+        const track = stream.getVideoTracks()[0];
+        imageCapture = new ImageCapture(track);         
+      })
+      .catch(err => {
+        output.innerText = "Camera access error: " + err;
+      });
+
+
+      captureBtn.addEventListener('click', () => {
+    if (!imageCapture) {
+      output.innerText = "ImageCapture not initialized.";
+      return;
+    }
+
+  imageCapture.takePhoto()
+    .then(blob => {
+
+      EXIF.getData(blob, function() {
+        const dateTaken = EXIF.getTag(this, "DateTimeOriginal");
+        output.innerText = dateTaken
+          ? "Date Taken: " + dateTaken
+          : "No EXIF DateTimeOriginal found.";
+      });
+
+
+      debugger;
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const arrayBuffer = event.target.result;
+        const tags = EXIF.readFromBinaryFile(arrayBuffer);
+        debugger;
+        console.log(tags); // Will show EXIF data if present
+      };
+      reader.readAsArrayBuffer(blob);
+    
+    })
+    .catch(err => {
+      output.innerText = "Photo capture failed: " + err;
+    });
+});
+  
+  </script>
+</body>
+</html>
