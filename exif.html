@@ -64,14 +64,16 @@
     .then(blob => {
 
       EXIF.getData(blob, function() {
-        const dateTaken = EXIF.getTag(this, "DateTimeOriginal");
-        output.innerText = dateTaken
-          ? "Date Taken: " + dateTaken
-          : "No EXIF DateTimeOriginal found.";
-      });
+      const dateTaken = EXIF.getAllTags(this);
+      if(tags){
+        output.innerText = JSON.stringify(dateTaken, undefined, 2);
+      }
+      else{
+        output.innerText = `no tags for ${blob.type}`;
+      }
 
-
-      debugger;
+    });
+ 
       const reader = new FileReader();
       reader.onload = function(event) {
         const arrayBuffer = event.target.result;
